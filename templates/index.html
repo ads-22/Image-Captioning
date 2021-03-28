@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Caption</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"></head>
+
+<style>
+    .heading{
+        font-weight: 100;
+        font-size: 4em;
+        text-shadow: 1px 1px 5px black;
+    }
+    .text{
+        font-size: 32px;
+        font-style: italic;
+    }
+
+    img{
+        height: 90%;
+        width: 100%;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="heading">Image Captioning</h1>
+                <p>Upload your Image to Generate the caption</p>
+            </div>
+        </div>
+        
+        <form class="form-inline" action="/" method="POST" enctype="multipart/form-data">
+            <label><b>Image : &nbsp;&nbsp;</b></label>
+            <input class="form-control" type="file" name="userfile" placeholder="Your Image">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br><br>
+        {% if your_result %}
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{{your_result['image']}}">
+                </div>
+                <div class="col-sm-8">
+                    <p class="text">
+                        Generated Caption
+                    </p>
+                    <p>
+                        <b>{{your_result['caption']}}</b>
+                    </p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
